@@ -12,11 +12,19 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](https://ember-cli.com/)
 
 ## Installation
+
+### Ember APP
 * Within LoyaltyWebProject/APP/, run
 * `npm install`
 
+### Node API
 * Within LoyaltyWebProject/API/, run
 * `npm install`
+
+### Postgres Database
+* Create a new postgres database LoyaltyProject (this is what the API looks for)  and run the following command in LoyaltyWebProject/:
+* `psql LoyaltyProject < db_dumpfile`
+* This will load the DB schemas and the data I currently have in my database.
 
 ## Running / Development
 
@@ -29,6 +37,12 @@ You will need the following things properly installed on your computer.
 * Within API/, run the command:
 * npm start
 * Visit your API at [http://localhost:3000](http://localhost:3000).
+
+### Postgres Database
+* Make sure you have your Postgres DB running on port 5432.
+* This is what the API is expecting: `postgres://localhost:5432/LoyaltyProject`
+* but this can be modified in /API/queries.js
+
 
 ### Twitter Script
 * To run the twitter script that scans a user's twitter account, you'll have to do a few things in API/twitter-test.js:
