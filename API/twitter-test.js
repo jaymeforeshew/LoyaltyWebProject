@@ -2,10 +2,10 @@ var Twitter = require('twitter'),
     psql    = require('./queries');
 
 var client = new Twitter({
-  consumer_key: 'eF35nE2Yn01e0D8EV2KTW9ZsQ',
-  consumer_secret: 'xSDHTY41oQD0pzoOvgsLOfHxKOUFtJXD0GjUmUv2tiXre9JnBs',
-  access_token_key: '536928551-Ew9BSWqXS6FVi8SRY3iPGtEnDYNyyTR3ltP0sWIW',
-  access_token_secret: 'r4NlxTXltVSYRDHvuVONmDhepFl3Co8dO2Zo7RnTarUOa'
+  consumer_key: // ENTER YOUR CREDENTIALS
+  consumer_secret: //
+  access_token_key: //
+  access_token_secret: //
 });
 
 var myTwitterID = '536928551';
