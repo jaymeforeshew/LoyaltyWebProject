@@ -12,11 +12,11 @@ You will need the following things properly installed on your computer.
 * [Ember CLI](https://ember-cli.com/)
 
 ## Installation
-
-* `git clone <repository-url>` this repository
-* `cd loyalty-webapp`
+* Within LoyaltyWebProject/APP/, run
 * `npm install`
-* `bower install`
+
+* Within LoyaltyWebProject/API/, run
+* `npm install`
 
 ## Running / Development
 
