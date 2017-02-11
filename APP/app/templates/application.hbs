@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="menu">
+    {{#link-to 'index'}}
+      <h1 class="left">
+        <em>YourLoyalty</em>
+      </h1>
+    {{/link-to}}
+    <div class="left links">
+      {{#link-to 'tweets'}}
+       Social Media
+      {{/link-to}}
+      {{#link-to 'purchases'}}
+       Purchases
+      {{/link-to}}
+      {{#link-to 'about'}}
+        About
+      {{/link-to}}
+      {{#link-to 'contact'}}
+        Contact
+      {{/link-to}}
+    </div>
+    <img class="sweettooth-logo" src="https://www.sweettoothrewards.com/wp-content/uploads/Square-logo-pink2.png" alt="Sweet Tooth –">
+  </div>
+  <div class="body">
+    {{outlet}}
+  </div>
+</div>

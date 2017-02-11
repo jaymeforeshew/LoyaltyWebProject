@@ -1,0 +1,8 @@
+<div class="jumbo">
+	<h2>Welcome!</h2>
+	<p> This is YourLoyalty Hub for purchases. Check out your history of purchase points!</p>
+</div>
+
+{{#each model as |purchaseinfo|}}
+	{{purchase-row thispurchase=purchaseinfo}}
+{{/each}}

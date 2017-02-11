@@ -1,0 +1,8 @@
+<div class="jumbo">
+	<h2>Welcome!</h2>
+	<p> This is YourLoyalty Hub for all things social media. Check out your history of promotional points!</p>
+</div>
+
+{{#each model as |embeddedTweet|}}
+	{{tweet-visual tweet=embeddedTweet}}
+{{/each}}
