@@ -1,0 +1,258 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: customers; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE customers (
+    userid integer NOT NULL,
+    customerid integer,
+    twitterid integer,
+    totalpoints integer
+);
+
+
+ALTER TABLE customers OWNER TO jaymeforeshew;
+
+--
+-- Name: shops; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE shops (
+    userid integer NOT NULL,
+    shopid integer,
+    description text,
+    name text
+);
+
+
+ALTER TABLE shops OWNER TO jaymeforeshew;
+
+--
+-- Name: transactions; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE transactions (
+    transactionid integer NOT NULL,
+    shopid integer,
+    customerid integer,
+    dollaramount double precision,
+    pointsgranted integer
+);
+
+
+ALTER TABLE transactions OWNER TO jaymeforeshew;
+
+--
+-- Name: twitteraccounts; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE twitteraccounts (
+    customerid integer NOT NULL,
+    twitterid integer NOT NULL,
+    twitterhandle text,
+    sinceid text
+);
+
+
+ALTER TABLE twitteraccounts OWNER TO jaymeforeshew;
+
+--
+-- Name: twittertransactions; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE twittertransactions (
+    customerid integer NOT NULL,
+    shopid integer,
+    tweetid text NOT NULL,
+    link text,
+    pointsgranted integer
+);
+
+
+ALTER TABLE twittertransactions OWNER TO jaymeforeshew;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: jaymeforeshew
+--
+
+CREATE TABLE users (
+    userid integer NOT NULL,
+    emailaddress text,
+    password text,
+    usertype text
+);
+
+
+ALTER TABLE users OWNER TO jaymeforeshew;
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY customers (userid, customerid, twitterid, totalpoints) FROM stdin;
+1	11	1234	103
+\.
+
+
+--
+-- Data for Name: shops; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY shops (userid, shopid, description, name) FROM stdin;
+2	1	Jobans shop	MyShopifyStore
+\.
+
+
+--
+-- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY transactions (transactionid, shopid, customerid, dollaramount, pointsgranted) FROM stdin;
+133	1	11	35.1199999999999974	3
+149	1	11	35.1199999999999974	3
+150	1	11	35.1199999999999974	3
+151	1	11	35.1199999999999974	3
+152	1	11	45.1199999999999974	4
+154	1	11	45.1199999999999974	4
+157	1	11	45.1199999999999974	4
+158	1	11	45.1199999999999974	4
+159	1	11	45.1199999999999974	4
+1627	1	11	67.8900000000000006	6
+16281	1	11	100	10
+\.
+
+
+--
+-- Data for Name: twitteraccounts; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY twitteraccounts (customerid, twitterid, twitterhandle, sinceid) FROM stdin;
+11	536928551	jrforeshew	829923819439599617
+\.
+
+
+--
+-- Data for Name: twittertransactions; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY twittertransactions (customerid, shopid, tweetid, link, pointsgranted) FROM stdin;
+11	1	828789532476715010	<blockquote class="twitter-tweet"><p lang="en" dir="ltr">test3 <a href="https://twitter.com/hashtag/thisIsAHashtag?src=hash">#thisIsAHashtag</a></p>&mdash; Jayme (@jrforeshew) <a href="https://twitter.com/jrforeshew/status/828789532476715010">February 7, 2017</a></blockquote>	5
+11	1	829923509472108545	<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Testing something out again :&#39;) <a href="https://twitter.com/hashtag/WALDO?src=hash">#WALDO</a></p>&mdash; Jayme (@jrforeshew) <a href="https://twitter.com/jrforeshew/status/829923509472108545">February 10, 2017</a></blockquote>	5
+11	1	829923819439599617	<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Should be <a href="https://twitter.com/hashtag/secondlastone?src=hash">#secondlastone</a></p>&mdash; Jayme (@jrforeshew) <a href="https://twitter.com/jrforeshew/status/829923819439599617">February 10, 2017</a></blockquote>	2
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: jaymeforeshew
+--
+
+COPY users (userid, emailaddress, password, usertype) FROM stdin;
+1	jrforeshew@gmail.com	qwerty	customer
+2	joban@123.com	jobanpassword	shop
+3	newshop@123.com	mypassword	shop
+\.
+
+
+--
+-- Name: customers customers_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY customers
+    ADD CONSTRAINT customers_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: shops shops_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY shops
+    ADD CONSTRAINT shops_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: transactions transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY transactions
+    ADD CONSTRAINT transactions_pkey PRIMARY KEY (transactionid);
+
+
+--
+-- Name: twitteraccounts twitterAccounts_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY twitteraccounts
+    ADD CONSTRAINT "twitterAccounts_pkey" PRIMARY KEY (customerid);
+
+
+--
+-- Name: twittertransactions twittertransactions_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY twittertransactions
+    ADD CONSTRAINT twittertransactions_pkey PRIMARY KEY (tweetid);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (userid);
+
+
+--
+-- Name: customers userID; Type: FK CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY customers
+    ADD CONSTRAINT "userID" FOREIGN KEY (userid) REFERENCES users(userid);
+
+
+--
+-- Name: shops userID; Type: FK CONSTRAINT; Schema: public; Owner: jaymeforeshew
+--
+
+ALTER TABLE ONLY shops
+    ADD CONSTRAINT "userID" FOREIGN KEY (userid) REFERENCES users(userid);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
